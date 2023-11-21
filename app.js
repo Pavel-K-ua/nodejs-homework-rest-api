@@ -1,3 +1,15 @@
+// hXAgAynE95Vk7evc
+const mongoose = require("mongoose");
+require("dotenv").config();
+
+const { DB_HOST } = process.env;
+mongoose.set("strictQuery", false);
+
+mongoose
+  .connect(DB_HOST)
+  .then(() => console.log("Database connection successful"))
+  .catch((error) => console.log(error));
+
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
