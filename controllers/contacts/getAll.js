@@ -24,7 +24,7 @@ const getAll = async (req, res) => {
     .find(filter);
   console.log(query);
 
-  const result = await Contact.paginate({}, options);
+  const result = await Contact.paginate(query, options);
   res.json(result);
 };
 
