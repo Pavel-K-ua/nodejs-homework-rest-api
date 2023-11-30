@@ -6,6 +6,11 @@ const registerSchema = Joi.object({
   subscription: Joi.string(),
 });
 
+const subscriptionSchema = Joi.object({
+  subscription: Joi.string().valid("starter", "pro", "business").required(),
+});
+
 module.exports = {
   registerSchema,
+  subscriptionSchema,
 };
