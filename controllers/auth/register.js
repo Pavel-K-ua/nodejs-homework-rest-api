@@ -7,7 +7,6 @@ const gravatar = require("gravatar");
 const sendEmail = require("../../helpers/sendEmail");
 
 const register = async (req, res) => {
-  console.log(req.body);
   const { email, password, subscription } = req.body;
 
   const user = await User.findOne({ email });
@@ -20,7 +19,7 @@ const register = async (req, res) => {
 
   const avatarURL = gravatar.url(email);
 
-  const verificationToken = nanoid;
+  const verificationToken = nanoid();
 
   const result = await User.create({
     email,
@@ -42,6 +41,8 @@ const register = async (req, res) => {
     email: result.email,
     subscription: result.subscription,
   });
+
+  console.log(verificationToken);
 };
 
 module.exports = register;
